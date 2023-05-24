@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>PCA slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Feature-Selection slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14385,201 +14385,68 @@ div.jp-OutputPrompt {
 <div class="slides"><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="What-is-PCA?">What is PCA?<a class="anchor-link" href="#What-is-PCA?">&#182;</a></h1><ul>
-<li><p>PCA is a dimensionality reduction technique.</p>
-</li>
-<li><p>It is a Feature Extraction algorithm, not a feature selection.</p>
-<p>convert n features to k, where k&lt;n</p>
-</li>
-</ul>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Applications-of-PCA">Applications of PCA<a class="anchor-link" href="#Applications-of-PCA">&#182;</a></h1><p><strong>1. Data Compression</strong></p>
-<pre><code>- e.g. Converting a 50D data into 10D.
-
-
-</code></pre>
-<p><strong>2. Data Visualization</strong></p>
-<pre><code>- reducing the dimension to 2D or 3D, in order to visualize the dataset 
-
-
-</code></pre>
-<p><strong>3. Speed Up Computation</strong></p>
-<pre><code>- reduces load on memory
-</code></pre>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Intuition-of-PCA">Intuition of PCA<a class="anchor-link" href="#Intuition-of-PCA">&#182;</a></h1><table>
-<thead>
-<tr>
-  <th style="text-align:center">Test Scores</th>
-  <th style="text-align:center">Assignment</th>
-  <th>CGPA</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td style="text-align:center">91</td>
-  <td style="text-align:center">3</td>
-  <td></td>
-</tr>
-<tr>
-  <td style="text-align:center">52</td>
-  <td style="text-align:center">2</td>
-  <td></td>
-</tr>
-<tr>
-  <td style="text-align:center">85</td>
-  <td style="text-align:center">3</td>
-  <td></td>
-</tr>
-<tr>
-  <td style="text-align:center">79</td>
-  <td style="text-align:center">3</td>
-  <td></td>
-</tr>
-<tr>
-  <td style="text-align:center">63</td>
-  <td style="text-align:center">2</td>
-  <td></td>
-</tr>
-</tbody>
-</table>
-<pre><code>- preserve the direction/feature having maxium variability.
-- more spread = more information
+<h1 id="Curse-of-Dimensionality">Curse of Dimensionality<a class="anchor-link" href="#Curse-of-Dimensionality">&#182;</a></h1><pre><code>- increasing number of features hurts.
 </code></pre>
 
 </div>
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Now 2D data looks like this. Which feature would you choose?</strong></p>
-<img src="./imgs/frame1.jpg" align=left>
-<p><strong>Idea:</strong></p>
-<ol>
-<li><p>Find the directions $f_1^{'}$ and $f_2^{'}$. such that spread on $f_1^{'}$ &gt;&gt; spread on $f_2^{'}$</p>
-</li>
-<li><p>Drop $f_2^{'}$</p>
-</li>
-<li><p>Project all data points onto $f_1^{'}$</p>
-<pre><code> - Thus 2D -&gt; 1D
- - It is like the rotation of axis
+<img src="model_performance.jpeg" style="height:500px;">
 
-
-
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Feature-Selection">Feature Selection<a class="anchor-link" href="#Feature-Selection">&#182;</a></h1><pre><code>- Feature selection is a way of selecting the subset of the most relevant features from the original features set by removing the redundant, irrelevant, or noisy features.
 </code></pre>
-</li>
-</ol>
-<br>
-<p><strong>Note:</strong> 
-Find a direction such that the variance of $x^{i}$ projected onto the direction is maximized.</p>
 
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PCA-Objective---Maximizing-Variance">PCA Objective - Maximizing Variance<a class="anchor-link" href="#PCA-Objective---Maximizing-Variance">&#182;</a></h1>
 </div>
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<img src="./imgs/frame_with_direction.jpg" align=left>
-<p>$\Large u_1 : unit vector $,  $\large ||u|| = 1$</p>
-<!-- $\huge u^T.u = 1$ -->
-<p>$\huge x_i^{'} = proj_{u1} (x_i) $</p>
-<p>$\huge x_i^{'} = \frac{u_1.x_i}{||u_1||} $</p>
-<p>$\huge x_i^{'} = u_1^T.x_i $</p>
-<br>
-Find $u_1$ such that var{$proj_{u1} (x_i)$} is maximum.
+<h1 id="Feature-Extraction">Feature Extraction<a class="anchor-link" href="#Feature-Extraction">&#182;</a></h1><pre><code>- It extracts out (create) new features from the existing ones.
+- e.g. : PCA
+</code></pre>
 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PCA-Objective---Minimizing-Distances">PCA Objective - Minimizing Distances<a class="anchor-link" href="#PCA-Objective---Minimizing-Distances">&#182;</a></h1>
-</div>
-</div></section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<img src="./imgs/frame_with_dis.jpg" align=left>
-<p>$\Large min_{u_1} \sum_{i=1}^{m} {d_i^2} $</p>
-<br>
-Find $u_1$ such that if we take all the distance sqaured from each point on $u_1$ , it should be minimized.
+<h1 id="Types-of-Feature-Selection">Types of Feature Selection<a class="anchor-link" href="#Types-of-Feature-Selection">&#182;</a></h1><pre><code>- Filter Method
+- Wrapper Method
+- Embedded Method
+</code></pre>
 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Eigen-Values-and-Eigen-Vectors">Eigen Values and Eigen Vectors<a class="anchor-link" href="#Eigen-Values-and-Eigen-Vectors">&#182;</a></h1>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Equation-:">Equation :<a class="anchor-link" href="#Equation-:">&#182;</a></h4><p>$\Large  \lambda_1.v_1 = S.v_1$</p>
-<p>where:</p>
-<p>$\lambda_1 : eigen value$
-, $v_1 : eigen vector$
-, $S : Covariance Matrix$</p>
-
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PCA-Summary">PCA Summary<a class="anchor-link" href="#PCA-Summary">&#182;</a></h1><ol>
-<li><p>Column Standardise</p>
-</li>
-<li><p>$ \large S = \frac{X^T.X}{m}$</p>
-</li>
-<li><p>compute eigen values &amp; eigenvectors of S. <br>
-  $eigen(S) = (\lambda_1 \geq \lambda_2 \geq  \lambda_3 ... \geq \lambda_n$)
- and 
- ( $v_1, v_2, v_3 ... v_n$ )</p>
-</li>
-<li><p>$u_1 = v_1$ and  $u_2 = v_2 ...$</p>
-</li>
-<li><p>Select top K eigen vectors.</p>
-</li>
-<li><p>Project $x_i$ on selected eigen vectors.</p>
-</li>
-</ol>
+<h1 id="Filter-Method">Filter Method<a class="anchor-link" href="#Filter-Method">&#182;</a></h1><pre><code>- checks the relevance of the feature with the o/p variable
+</code></pre>
 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Understanding-Eigen-values">Understanding Eigen-values<a class="anchor-link" href="#Understanding-Eigen-values">&#182;</a></h1>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Eigen values of covar matix (S) =
-$(\lambda_1 \geq \lambda_2 \geq  \lambda_3 ... \geq \lambda_n$)
-and 
-( $v_1, v_2, v_3 ... v_n$ )</p>
-
-</div>
-</div></div><div class="fragment">
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Variance explained by ($i^{th}$ eigen vector) = $ \LARGE \frac{\lambda_i}{ \sum_{i=1}^{d}{\lambda_i}}$</p>
-
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PCA-Code-(from-scratch)">PCA Code (from scratch)<a class="anchor-link" href="#PCA-Code-(from-scratch)">&#182;</a></h1><img src='https://media.giphy.com/media/765ccrAiB0g9z6EApL/giphy.gif' style="height:300px;">
+<h1 id="Wrapper-Method">Wrapper Method<a class="anchor-link" href="#Wrapper-Method">&#182;</a></h1><pre><code>- Forward Selection
+- Backward Elimination
+</code></pre>
 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Choosing-the-right-dimensions">Choosing the right dimensions<a class="anchor-link" href="#Choosing-the-right-dimensions">&#182;</a></h1>
+<h1 id="Embedded-Method">Embedded Method<a class="anchor-link" href="#Embedded-Method">&#182;</a></h1><pre><code>- combines the qualities' of filter and wrapper methods.
+- L1 regularisation, Decision Trees, RandomForest etc.
+</code></pre>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Feature-Selection---Code">Feature Selection - Code<a class="anchor-link" href="#Feature-Selection---Code">&#182;</a></h1><img src='https://media.giphy.com/media/765ccrAiB0g9z6EApL/giphy.gif' style="height:300px;">
+
 </div>
 </div></section></section>
 </div>
